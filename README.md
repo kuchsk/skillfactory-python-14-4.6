@@ -1,11 +1,19 @@
 ## Задание по Python: очистка данных в pandas
 Краткое описание задачи
-Вам предоставлен файл test_data.csv. Исходный DataFrame:
+Вам предоставлен файл test_data.csv. 
+
+Исходный DataFrame:
+
 ![alt text](https://raw.githubusercontent.com/kuchsk/skillfactory-python-14-4.6/main/zadan.png?raw=true)
 
-Original DataFrame
-
 Ваша задача — очистить данную таблицу от пропусков следующим образом:
+
+Если признак имеет больше 50 % пропущенных значений, удалите его.
+Для оставшихся данных: если в строке более двух пропусков, удалите строку.
+Для оставшихся данных: числовые признаки заполните средним значением, а категориальные — модой.
+У вас должна получиться следующая таблица df
+
+![alt text](https://raw.githubusercontent.com/kuchsk/skillfactory-python-14-4.6/main/rez.png?raw=true)
 
 Если признак имеет больше 50 % пропущенных значений, удалить его.
 Для оставшихся данных: если в строке более двух пропусков, удалить строку.
@@ -19,8 +27,6 @@ Original DataFrame
 
 ### импортируем библиотеки
 import pandas as pd
-
-import numpy as np
 
 ### читаем файл
 df = pd.read_csv('https://raw.githubusercontent.com/kuchsk/skillfactory-python-14-4.6/main/propuski.csv', sep = ';', index_col=False, )
@@ -49,6 +55,9 @@ for i in df.columns:
   
 ### Вывод итогового DataFrame 
 display(df)
+
+![alt text](https://raw.githubusercontent.com/kuchsk/skillfactory-python-14-4.6/main/my.png?raw=true)
+
 
 ### Выводы
 Очистка данных — это важный и распространенный процесс при работе с данными. Библиотека pandas позволяет легко и быстро решать данную задачу с помощью набора методов для работы с пропущенными значениями. Основная идея состоит в том, чтобы удалить или заполнить пропуски с помощью статистических методов, чтобы сохранить максимальную информацию и минимизировать потери данных.
