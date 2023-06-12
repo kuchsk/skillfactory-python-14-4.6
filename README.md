@@ -1,7 +1,7 @@
 ## Задание по Python: очистка данных в pandas
 Краткое описание задачи
 Вам предоставлен файл test_data.csv. Исходный DataFrame:
-![alt text]([http://url/to/img](https://raw.githubusercontent.com/kuchsk/skillfactory-python-14-4.6/main/zadan.png)
+![alt text](https://raw.githubusercontent.com/kuchsk/skillfactory-python-14-4.6/main/zadan.png?raw=true)
 
 Original DataFrame
 
