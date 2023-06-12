@@ -18,6 +18,7 @@ Original DataFrame
 
 ### импортируем библиотеки
 import pandas as pd
+
 import numpy as np
 
 ### читаем файл
@@ -28,6 +29,7 @@ df = pd.read_csv('https://raw.githubusercontent.com/kuchsk/skillfactory-python-1
 df = df.dropna(thresh=df.shape[0]*0.5, axis =1 )
 
 na_columns = na_count[na_count > len(df)/2].index
+
 df = df.drop(columns=na_columns)
 
 ### Для оставшихся данных: если в строке более двух пропусков, удалите строку.
@@ -36,9 +38,13 @@ thresh2 = df.shape[1] - 2
 ## Для оставшихся данных: числовые признаки заполните средним значением, а категориальные — модой.
 
 for i in df.columns: 
+
   if df[i].dtypes == 'int' or df[i].dtypes == 'float': 
+  
     df[i].fillna(df[i].mean(), inplace=True) # среднее для числовых признаков 
+    
   elif df[i].dtypes == 'object': 
+  
     df[i].fillna(df[i].mode(), inplace=True) # мода значение для категориальных признаков
     
 ### Если даныые отличаются от категориальных или числовых, дабы избежать ошибок
@@ -54,6 +60,7 @@ display(df)
 ### 1. Второй порог тоже сделать расчетным: - разобраться...
 
 thresh2 = df.shape[1] - 2
+
 df = df.dropna(thresh = thresh2, axis = 0)
 
 ### В терминале skillfactory пропадает строка
