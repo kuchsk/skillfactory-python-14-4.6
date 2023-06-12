@@ -29,7 +29,7 @@ df = pd.read_csv('https://raw.githubusercontent.com/kuchsk/skillfactory-python-1
 df = df.dropna(thresh=df.shape[0]*0.5, axis =1 )
 
 ### Для оставшихся данных: если в строке более двух пропусков, удалите строку.
-thresh2 = df.shape[1] - 2
+df = df.dropna(thresh = 3, axis = 0)
 
 ## Для оставшихся данных: числовые признаки заполните средним значением, а категориальные — модой.
 
@@ -43,7 +43,7 @@ for i in df.columns:
   
     df[i].fillna(df[i].mode(), inplace=True) # мода значение для категориальных признаков
     
-### Если даныые отличаются от категориальных или числовых, дабы избежать ошибок
+#### Если даныые отличаются от категориальных или числовых, дабы избежать ошибок
   else: pass
   
 ### Вывод итогового DataFrame 
@@ -61,41 +61,3 @@ df = df.dropna(thresh = thresh2, axis = 0)
 
 ### В терминале skillfactory пропадает строка
 6  0.241508  0.567744  1.200000  hist
-
-
-
-
-
-
-
-import pandas as pd
-
-# Чтение файла
-df = pd.read_csv('test_data.csv')
-
-# Определение количества пропусков
-na_count = df.isna().sum()
-
-# Определение признаков с более чем 50% пропущенных значений
-na_columns = na_count[na_count > len(df)/2].index
-df = df.drop(columns=na_columns)
-
-# Удаление строк с более чем двумя пропусками
-df = df.dropna(thresh=5)
-
-# Заполнение числовых признаков средним значением
-numeric_columns = df.select_dtypes(include='number').columns
-df[numeric_columns] = df[numeric_columns].fillna(df[numeric_columns].mean())
-
-# Заполнение категориальных признаков модой
-categorical_columns = df.select_dtypes(exclude='number').columns
-df[categorical_columns] = df[categorical_columns].fillna(df[categorical_columns].mode().iloc[0])
-
-# Вывод итогового DataFrame
-print(df)
-Полученный DataFrame:
-
-Cleaned DataFrame
-
-Выводы
-Очистка данных — это важный и распространенный процесс при работе с данными. Библиотека pandas позволяет легко и быстро решать данную задачу с помощью набора методов для работы с пропущенными значениями. Основная идея состоит в том, чтобы удалить или заполнить пропуски с помощью статистических методов, чтобы сохранить максимальную информацию и минимизировать потери данных.
