@@ -29,7 +29,7 @@
 import pandas as pd
 
 ### читаем файл
-df = pd.read_csv('https://raw.githubusercontent.com/kuchsk/skillfactory-python-14-4.6/main/propuski.csv', sep = ';', index_col=False, )
+df = pd.read_csv('https://raw.githubusercontent.com/kuchsk/skillfactory-python-14-4.6/main/propuski.csv', sep = ';', index_col=0, )
 
 
 ### Если признак имеет больше 50 % пропущенных значений, удалите его.
