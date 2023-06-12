@@ -28,10 +28,6 @@ df = pd.read_csv('https://raw.githubusercontent.com/kuchsk/skillfactory-python-1
 ### Если признак имеет больше 50 % пропущенных значений, удалите его.
 df = df.dropna(thresh=df.shape[0]*0.5, axis =1 )
 
-na_columns = na_count[na_count > len(df)/2].index
-
-df = df.drop(columns=na_columns)
-
 ### Для оставшихся данных: если в строке более двух пропусков, удалите строку.
 thresh2 = df.shape[1] - 2
 
